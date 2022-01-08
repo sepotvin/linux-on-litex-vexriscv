@@ -119,6 +119,25 @@ class ArtyS7(Board):
             "icap_bitstream",
         }, bitstream_ext=".bit")
 
+# Mimas A7 support ---------------------------------------------------------------------------------
+
+class MimasA7(Board):
+    def __init__(self):
+        from litex_boards.targets import numato_mimas_a7
+        Board.__init__(self, numato_mimas_a7.BaseSoC, soc_capabilities={
+            # Communication
+            "serial",
+            "ethernet",
+            # GPIOs
+            "leds",
+            "switches",
+            # Monitoring
+            "xadc",
+            # 7-Series specific
+            "mmcm",
+            "icap_bitstream",
+        }, bitstream_ext=".bit")
+
 # NeTV2 support ------------------------------------------------------------------------------------
 
 class NeTV2(Board):
@@ -625,6 +644,7 @@ supported_boards = {
     "qmtech_wukong":    Qmtech_WuKong,
     "sds1104xe":        SDS1104XE,
     "mnt_rkx7":         MNT_RKX7,
+    "mimas_a7":         MimasA7,
 
     # Lattice
     "versa_ecp5":      VersaECP5,
